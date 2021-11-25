@@ -1,3 +1,6 @@
+@extends('backend.layout.master')
+    @section('title','Admin')
+    @section('content')
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,3 +32,4 @@
 </table>
 </body>
 </html>
+@endsection

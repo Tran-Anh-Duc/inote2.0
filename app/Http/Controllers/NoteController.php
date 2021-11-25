@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\User;
 use App\NoteRepositories\NoteRepository;
 use Illuminate\Http\Request;
 
@@ -32,12 +33,14 @@ class NoteController extends Controller
         return view('backend.note.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $note = new Note();
-        $note->title = $request->title;
-        $note->content = $request->content;
-        $note->save();
+        $data = $request->all();
+        User::query()->create($data);
+//        $note = new Note();
+//        $note->title = $request->title;
+//        $note->content = $request->content;
+//        $note->save();
         return redirect()->route('note.list');
     }
 
@@ -47,7 +50,7 @@ class NoteController extends Controller
         return view('backend.note.edit',compact('note'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request,$id): \Illuminate\Http\RedirectResponse
     {
         $note = Note::query()->findOrFail($id);
         $data = $request->only('title','content');
@@ -56,15 +59,12 @@ class NoteController extends Controller
 
     }
 
-    public function delete($id)
+    public function delete($id): \Illuminate\Http\RedirectResponse
     {
         $note = Note::query()->findOrFail($id);
         $note->delete();
         echo "success delete product";
         return redirect()->route('note.list');
     }
-
-
-
 
 }

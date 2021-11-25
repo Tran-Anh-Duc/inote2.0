@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -29,5 +30,11 @@ Route::get('/delete/{id}',[NoteController::class,'delete'])->name("note.delete")
 route::prefix('users')->group(function (){
     Route::get('/',[UserController::class,"index"])->name('users.index');
 });
+Route::get('/login',[AuthController::class,'showFormLogin'])->name("admin.showFormLogin");
+Route::post('/login',[AuthController::class,'login'])->name("admin.login");
+Route::get('/logout',[AuthController::class,'logout'])->name("admin.logout");
+Route::get('/register',[AuthController::class,'showFormRegister'])->name("admin.showFormRegister");
+Route::post('/register',[AuthController::class,'register'])->name("admin.register");
+
 
 
