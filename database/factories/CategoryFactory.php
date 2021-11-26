@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class NoteFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,10 +14,8 @@ class NoteFactory extends Factory
     public function definition()
     {
         return [
-            //
-            "title"=> $this->faker->name(),
-            "content"=> $this->faker->name(),
-            "categoryid"=> Category::all()->random()->id,
+            "name"=>$this->faker->name(),
+            "description"=>$this->faker->text(200),
         ];
     }
 }

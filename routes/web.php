@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,7 @@ Route::get('/create',[NoteController::class,'showCreateForm'])->name("note.showC
 Route::post('/create',[NoteController::class,'store'])->name("note.store");
 Route::get('/edit/{id}',[NoteController::class,'showFormEdit'])->name("note.showFormEdit");
 Route::post('/edit/{id}',[NoteController::class,'update'])->name("note.update");
-Route::get('/delete/{id}',[NoteController::class,'delete'])->name("note.delete");
+//Route::get('/delete/{id}',[NoteController::class,'delete'])->name("note.delete");
 
 route::prefix('users')->group(function (){
     Route::get('/',[UserController::class,"index"])->name('users.index');
@@ -36,5 +37,15 @@ Route::get('/logout',[AuthController::class,'logout'])->name("admin.logout");
 Route::get('/register',[AuthController::class,'showFormRegister'])->name("admin.showFormRegister");
 Route::post('/register',[AuthController::class,'register'])->name("admin.register");
 
+Route::prefix('/categories')->group(function (){
+    Route::get('/',[CategoryController::class,'index'])->name('categories.index');
+    Route::get('/create',[CategoryController::class,'showFormCreate'])->name('categories.create');
+    Route::post('/create',[CategoryController::class,'store'])->name('categories.store');
+    Route::get('/detail/{id}',[CategoryController::class,'show'])->name('categories.show');
+    Route::get('/delete/{id}',[CategoryController::class,'destroy'])->name('categories.delete');
+    Route::get('/edit/{id}',[CategoryController::class,'showFormEdit'])->name('categories.showFormEdit');
+    Route::post('/edit/{id}',[CategoryController::class,'update'])->name('categories.update');
+
+});
 
 

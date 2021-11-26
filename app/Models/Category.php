@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
  * @method static create(array $data)
  * @method static findOrFail($id)
- * @method static where(string $string, string $string1)
- * @method static find(mixed $input)
+ * @method static where(string $string)
  */
-class Note extends Model
+class Category extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'title',
-        'content',
-        'categoryid'
+        'name',
+        'description'
     ];
 
-    public function category()
+    public function notes()
     {
-        return $this->belongsTo(Category::class,'categoryid');
+        return $this->hasMany(Note::class);
     }
 }
