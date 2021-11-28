@@ -31,7 +31,7 @@
 
             <td><a href="{{route('note.detail',$note->id)}}"><button type="submit" class="btn btn-success">Detail</button></a></td>
             <td><a href="{{route("note.showFormEdit",$note->id)}}"><button type="submit" class="btn btn-success">edit</button></a></td>
-{{--            <td><a onclick="return confirm('are you sure')" href="{{route('note.delete',$note->id)}}"><button type="submit" class="btn btn-success">Delete</button></a></td>--}}
+            <td><a onclick="return confirm('are you sure')" href="{{route('note.delete',$note->id)}}"><button type="submit" class="btn btn-success">Delete</button></a></td>
         </tr>
     @endforeach
     </tbody>

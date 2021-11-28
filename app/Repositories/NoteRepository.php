@@ -14,8 +14,8 @@ class NoteRepository extends BaseRepository
 
     public function getAll()
     {
-        return Note::all()->toQuery()->paginate(3)
-            ;
+        return Note::all()->toQuery()->paginate(3);
+
     }
 
     public function getById($id)

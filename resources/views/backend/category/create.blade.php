@@ -1,3 +1,6 @@
+{{--@if(isset($errors))--}}
+{{--    --}}
+{{--@endif--}}
 @extends('backend.layout.master')
 @section('content')
     <form method="post" >
@@ -8,13 +11,19 @@
                 <div class="form-group">
                     <label for="name" class="col-md-4 control-label">Name</label>
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name">
+                        <input id="name" type="text" class="form-control" name="name" value="{{old('name')}}">
+                        @error('name')
+                            <p class="text text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name" class="col-md-4 control-label">Description</label>
                     <div class="col-md-6">
-                        <textarea class="form-control" name="description"></textarea>
+                        <textarea class="form-control" name="description" ></textarea>
+                        @error('description')
+                        <p class="text text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group">

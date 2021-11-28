@@ -2,12 +2,12 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-8">
-                <a type="button" class="btn btn-primary" href=" {{route('categories.create')}}">Add New Category</a>
+            <div  class="col-8">
+                <a style="margin-left: 25px" type="button" class="btn btn-primary" href=" {{route('categories.create')}}">Add New Category</a>
             </div>
-{{--            <div class="col-4">--}}
-{{--                {{$categories->links()}}--}}
-{{--            </div>--}}
+            <div class="col-4">
+                {{$categories->links()}}
+            </div>
 
 
         </div>

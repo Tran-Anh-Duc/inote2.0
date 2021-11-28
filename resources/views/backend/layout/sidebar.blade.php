@@ -33,7 +33,7 @@
                 <h6 class="collapse-header">List:</h6>
                 <a class="collapse-item" href="{{route('users.index')}}">User</a>
                 <a class="collapse-item" href="{{route('note.list')}}">Note</a>
-                <a class="collapse-item" href="{{route('note.list')}}">Category</a>
+                <a class="collapse-item" href="{{route('categories.index')}}">Category</a>
             </div>
         </div>
     </li>

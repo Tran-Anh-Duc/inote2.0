@@ -26,7 +26,7 @@ Route::get('/create',[NoteController::class,'showCreateForm'])->name("note.showC
 Route::post('/create',[NoteController::class,'store'])->name("note.store");
 Route::get('/edit/{id}',[NoteController::class,'showFormEdit'])->name("note.showFormEdit");
 Route::post('/edit/{id}',[NoteController::class,'update'])->name("note.update");
-//Route::get('/delete/{id}',[NoteController::class,'delete'])->name("note.delete");
+Route::get('/delete/{id}',[NoteController::class,'delete'])->name("note.delete");
 
 route::prefix('users')->group(function (){
     Route::get('/',[UserController::class,"index"])->name('users.index');

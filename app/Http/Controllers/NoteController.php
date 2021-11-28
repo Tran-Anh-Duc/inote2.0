@@ -63,12 +63,12 @@ class NoteController extends Controller
 
     }
 
-//    public function delete($id): \Illuminate\Http\RedirectResponse
-//    {
-//        $note = Note::query()->findOrFail($id);
-//        $note->delete();
-//        echo "success delete product";
-//        return redirect()->route('note.list');
-//    }
+    public function delete($id): \Illuminate\Http\RedirectResponse
+    {
+        $note = Note::query()->findOrFail($id);
+        $note->delete();
+        echo "success delete product";
+        return redirect()->route('note.list');
+    }
 
 }

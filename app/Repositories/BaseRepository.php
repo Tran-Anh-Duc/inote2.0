@@ -15,7 +15,7 @@ class BaseRepository
 
     public function getAll()
     {
-        return $this->models->all();
+        return $this->models->all()->toQuery()->paginate(3);
     }
 
     public function getById($id)

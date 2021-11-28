@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCategpryRequest;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    protected  $categoryRepository;
+    protected $categoryRepository;
 
     public function __construct(CategoryRepository $categoryRepository)
     {
@@ -18,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->getAll();
-        return view('backend.category.list',compact("categories"));
+        return view('backend.category.list', compact("categories"));
     }
 
     public function showFormCreate()
@@ -26,8 +27,9 @@ class CategoryController extends Controller
         return view('backend.category.create');
     }
 
-    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    public function store(CreateCategpryRequest $request): \Illuminate\Http\RedirectResponse
     {
+
         $category = $this->categoryRepository->create($request);
         return redirect()->route('categories.index');
     }
@@ -35,7 +37,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = $this->categoryRepository->getById($id);
-        return view('backend.category.detail',compact('category'));
+        return view('backend.category.detail', compact('category'));
     }
 
     public function destroy($id): \Illuminate\Http\RedirectResponse
@@ -44,10 +46,11 @@ class CategoryController extends Controller
         $this->categoryRepository->delete($id);
         return redirect()->route('categories.index');
     }
+
     public function showFormEdit($id)
     {
         $category = $this->categoryRepository->getById($id);
-        return view('backend.category.edit',compact('category'));
+        return view('backend.category.edit', compact('category'));
 
     }
 
@@ -57,8 +60,8 @@ class CategoryController extends Controller
 //        $category = $this->categoryRepository->edit($request,$id);
 //        return redirect()->route('categories.index');
         $category = Category::query()->findOrFail($id);
-        $data = $request->only('name','description');
-        Category::query()->where('id','=',$id)->update($data);
+        $data = $request->only('name', 'description');
+        Category::query()->where('id', '=', $id)->update($data);
         return redirect()->route('categories.index');
     }
 }
